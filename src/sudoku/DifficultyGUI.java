@@ -1,25 +1,24 @@
 package sudoku;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-public class Difficulty {
+public class DifficultyGUI {
 
-    public static void main() {
-        final JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(250, 75);
+    private final JFrame frame;
+    private final JPanel panel;
 
-        JPanel panel = new JPanel();
+    private final JButton easy;
+    private final JButton medium;
+    private final JButton hard;
 
-        final JButton easy = new JButton("Easy");
-        final JButton medium = new JButton("Medium");
-        final JButton hard = new JButton("Hard");
-
-        panel.add(easy);
-        panel.add(medium);
-        panel.add(hard);
+    public DifficultyGUI() {
+        easy = new JButton("Easy");
+        medium = new JButton("Medium");
+        hard = new JButton("Hard");
 
         class MenuListener implements ActionListener {
 
@@ -40,10 +39,17 @@ public class Difficulty {
         easy.addActionListener(listener);
         medium.addActionListener(listener);
         hard.addActionListener(listener);
-        
-        
+        panel = new JPanel();
+        panel.add(easy);
+        panel.add(medium);
+        panel.add(hard);
+
+        frame = new JFrame();
         frame.add(panel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(250, 75);
         frame.setVisible(true);
 
     }
+
 }
