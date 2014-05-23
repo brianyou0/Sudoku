@@ -1,28 +1,75 @@
 package sudoku;
 
+import java.util.ArrayList;
+
 public class Sudoku {
 
-    private final int[][] finishedBoard;
+    private int timeOut;
+    private int masterTimeOut;
+    private int[][] finishedBoard;
     private int[][] unfinishedBoard;
 
-    public Sudoku() {
+    public Sudoku(int difficulty) {
+        timeOut = 0;
+        masterTimeOut = 0;
         finishedBoard = new int[9][9];
+        unfinishedBoard = new int[9][9];
+        for (int x = 0; x < 9; x++) {
+
+            ArrayList<Integer> remains = new ArrayList<>();
+            for (int p = 1; p <= 9; p++) {
+                remains.add(p);
+            }
+            for (int y = 0; y < 9; y++) {
+                if (masterTimeOut == 10) {
+                    finishedBoard = new int[9][9];
+                    y = 0;
+                    x = 0;
+                }
+                if (timeOut == 100) {
+                    for (int z = 0; z < 9; z++) {
+                        finishedBoard[x][z] = 0;
+                        y = 0;
+                        remains = new ArrayList<>();
+                        for (int p = 1; p <= 9; p++) {
+                            remains.add(p);
+                        }
+                    }
+                    masterTimeOut++;
+                }
+                int random = (int) (Math.random() * remains.size());
+                int rand = remains.get(random);
+                finishedBoard[x][y] = rand;
+                if (!pieceIsValid(x, y, finishedBoard)) {
+                    y--;
+                    timeOut++;
+                } else {
+                    remains.remove(remains.indexOf(rand));
+                    timeOut = 0;
+                    //System.out.print(rand + " ");
+                }
+
+            }
+            System.out.println();
+        }
         for (int x = 0; x < 9; x++) {
             for (int y = 0; y < 9; y++) {
-                int random = (int) (Math.random() * 9 + 1);
-                finishedBoard[x][y] = random;
-                if (!pieceIsValid(x, y, finishedBoard))
-                    y--;
+                System.out.print(finishedBoard[x][y] + " ");
             }
+            System.out.println();
         }
-
+        System.out.println();
+        unfinishedBoard = makeUnfinished(finishedBoard, difficulty);
+        for (int x = 0; x < 9; x++) {
+            for (int y = 0; y < 9; y++) {
+                System.out.print(unfinishedBoard[x][y] + " ");
+            }
+            System.out.println();
+        }
     }
 
     private boolean pieceIsValid(int row, int col, int[][] array) {
         for (int x = 0; x < 9; x++) {
-            if (x != col && array[row][col] == array[row][x]) {
-                return false;
-            }
             if (x != row && array[row][col] == array[x][col]) {
                 return false;
             }
@@ -111,6 +158,23 @@ public class Sudoku {
         }
 
         return true;
+    }
+
+    private int[][] makeUnfinished(int[][] arr, int amount) {
+        // Easy: Remove 45
+        // Medium: Remove 50
+        // Hard: Remove 55
+
+        for (int x = 0; x < amount; x++) {
+            int row = (int) (Math.random() * 9);
+            int col = (int) (Math.random() * 9);
+            if (arr[row][col] != 0) {
+                arr[row][col] = 0;
+            } else {
+                x--;
+            }
+        }
+        return arr;
     }
 
 }
