@@ -12,6 +12,6 @@ package sudoku;
  */
 public class Main {
     public static void main (String [] args) {
-        Sudoku x = new Sudoku(50);
+        Sudoku x = new Sudoku(80);
     }
 }

@@ -25,6 +25,11 @@ public class Sudoku {
                     finishedBoard = new int[9][9];
                     y = 0;
                     x = 0;
+                    remains = new ArrayList<>();
+                    for (int p = 1; p <= 9; p++) {
+                        remains.add(p);
+                    }
+                    masterTimeOut = 0;
                 }
                 if (timeOut == 100) {
                     for (int z = 0; z < 9; z++) {
@@ -46,25 +51,18 @@ public class Sudoku {
                 } else {
                     remains.remove(remains.indexOf(rand));
                     timeOut = 0;
-                    //System.out.print(rand + " ");
                 }
 
             }
-            System.out.println();
         }
         for (int x = 0; x < 9; x++) {
             for (int y = 0; y < 9; y++) {
-                System.out.print(finishedBoard[x][y] + " ");
             }
-            System.out.println();
         }
-        System.out.println();
         unfinishedBoard = makeUnfinished(finishedBoard, difficulty);
         for (int x = 0; x < 9; x++) {
             for (int y = 0; y < 9; y++) {
-                System.out.print(unfinishedBoard[x][y] + " ");
             }
-            System.out.println();
         }
     }
 
