@@ -12,8 +12,7 @@ package sudoku;
  */
 public class Main {
     public static void main (String [] args) {
-        Sudoku x = new Sudoku(80);
-        BottomButtons b = new BottomButtons();
+        DifficultyGUI x = new DifficultyGUI();
         
     }
 }

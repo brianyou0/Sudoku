@@ -1,5 +1,6 @@
 package sudoku;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -17,6 +18,7 @@ public class DifficultyGUI {
 
     public DifficultyGUI() {
         easy = new JButton("Easy");
+        easy.setBackground(Color.GREEN);
         medium = new JButton("Medium");
         hard = new JButton("Hard");
 
