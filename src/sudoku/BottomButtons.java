@@ -2,32 +2,20 @@ package sudoku;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.GridLayout;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class BottomButtons {
 
-    private JPanel panel;
-    
-
-    
-    public BottomButtons() {
-        
-        
-        check = new JButton("Check");
-        solve = new JButton("Solve");
-        newGame = new JButton("New Game");
-        
-        panel.add(check);
-        panel.add(solve);
-        panel.add(newGame);
-    }
-    
-    public void bottomButtons() {
-        JFrame frame = new JFrame();
+    public JPanel bottomButtons() {
 
         JPanel bottomPanel = new JPanel();
 
+        JButton check = new JButton("Check");
+        JButton solve = new JButton("Solve");
+        JButton newGame = new JButton("New Game");
 
         class CheckListener implements ActionListener {
 
@@ -49,10 +37,9 @@ public class BottomButtons {
 
         class NewListener implements ActionListener {
 
-            @Override
             public void actionPerformed(ActionEvent event) {
                 Difficulty difficult = new Difficulty();
-                difficult.frame.setVisible(true);
+                difficult.setVisible();
             }
         }
         ActionListener new1 = new CheckListener();
@@ -63,10 +50,7 @@ public class BottomButtons {
         bottomPanel.add(newGame);
 
         bottomPanel.setBackground(Color.GREEN);
-        frame.setBackground(Color.GREEN);
-        frame.add(bottomPanel);
-        frame.setSize(400, 100);
-        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+        return bottomPanel;
     }
+
 }
