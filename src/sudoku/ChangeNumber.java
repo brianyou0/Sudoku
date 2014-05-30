@@ -8,18 +8,20 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class ChangeNumber {
+
     final JFrame change = new JFrame();
-    public void Change (JButton button) {
+
+    public void Change(JButton button) {
         final JButton changeBut = button;
         change.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         change.setSize(450, 130);
 
-        JPanel query = new JPanel();       
+        JPanel query = new JPanel();
         JLabel ask = new JLabel("Which number?");
         query.add(ask);
-        
 
         class Act implements ActionListener {
+
             @Override
             public void actionPerformed(ActionEvent Event) {
                 int x = Integer.parseInt(Event.getActionCommand());
@@ -55,27 +57,27 @@ public class ChangeNumber {
                 change.dispose();
             }
         }
-        
+
         ActionListener act = new Act();
         JPanel numbers = new JPanel();
         for (int x = 1; x <= 9; x++) {
             JButton changed = new JButton(x + "");
             changed.addActionListener(act);
             numbers.add(changed);
-           
+
         }
-               
-        
-        JPanel everything = new JPanel();        
+
+        JPanel everything = new JPanel();
         everything.add(query);
         everything.add(numbers);
-        
+
         change.add(everything);
         change.setVisible(false);
         change.setResizable(false);
     }
-    public void setVisible(){
-            change.setVisible(true);
-            
-        }
+
+    public void setVisible() {
+        change.setVisible(true);
+
+    }
 }

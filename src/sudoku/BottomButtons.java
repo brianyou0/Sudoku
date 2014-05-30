@@ -2,8 +2,6 @@ package sudoku;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.GridLayout;
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,6 +17,7 @@ public class BottomButtons {
 
         class CheckListener implements ActionListener {
 
+            @Override
             public void actionPerformed(ActionEvent event) {
 
             }
@@ -28,22 +27,23 @@ public class BottomButtons {
 
         class SolveListener implements ActionListener {
 
+            @Override
             public void actionPerformed(ActionEvent event) {
-
+                
             }
         }
-        ActionListener solve1 = new CheckListener();
-        check.addActionListener(solve1);
+        ActionListener solve1 = new SolveListener();
+        solve.addActionListener(solve1);
 
         class NewListener implements ActionListener {
 
+            @Override
             public void actionPerformed(ActionEvent event) {
                 Difficulty difficult = new Difficulty();
-                difficult.setVisible();
             }
         }
-        ActionListener new1 = new CheckListener();
-        check.addActionListener(new1);
+        ActionListener new1 = new NewListener();
+        newGame.addActionListener(new1);
 
         bottomPanel.add(check);
         bottomPanel.add(solve);
@@ -52,5 +52,7 @@ public class BottomButtons {
         bottomPanel.setBackground(Color.GREEN);
         return bottomPanel;
     }
+    
+    
 
 }

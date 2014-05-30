@@ -2,14 +2,14 @@ package sudoku;
 
 import java.util.ArrayList;
 
-public class Sudoku {
+public class SolutionGenerator {
 
     private int timeOut;
     private int masterTimeOut;
     private int[][] finishedBoard;
     private int[][] unfinishedBoard;
 
-    public Sudoku(int difficulty) {
+    public SolutionGenerator(int difficulty) {
         timeOut = 0;
         masterTimeOut = 0;
         finishedBoard = new int[9][9];
@@ -55,15 +55,8 @@ public class Sudoku {
 
             }
         }
-        for (int x = 0; x < 9; x++) {
-            for (int y = 0; y < 9; y++) {
-            }
-        }
         unfinishedBoard = makeUnfinished(finishedBoard, difficulty);
-        for (int x = 0; x < 9; x++) {
-            for (int y = 0; y < 9; y++) {
-            }
-        }
+
     }
 
     private boolean pieceIsValid(int row, int col, int[][] array) {
@@ -173,6 +166,14 @@ public class Sudoku {
             }
         }
         return arr;
+    }
+
+    public int getNumber(int row, int column) {
+        return unfinishedBoard[row][column];
+    }
+    
+    public int [][] solve() {
+        return finishedBoard;
     }
 
 }

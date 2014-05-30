@@ -14,7 +14,7 @@ public class SudokuMain {
         System.out.println(field[i][j]);
         }
     }*/
-        Board board = new Board();
-        board.generateBoard();
+        Board x = new Board();
+        x.generateBoard(35);
     }
 }
