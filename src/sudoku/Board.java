@@ -119,12 +119,10 @@ public class Board {
                     for (int y = 0; y < 9; y++) {
                         if (jButtons.get(i).getText().equals("")) {
                             b[x][y] = 0;
-                        }
-                        else {
+                        } else {
                             b[x][y] = Integer.parseInt(jButtons.get(i).getText());
                         }
                         i++;
-                        System.out.print(b[x][y]);
                     }
 
                 }
@@ -232,19 +230,18 @@ public class Board {
 
         }
         ActionListener check1 = new CheckListener();
-        check
-                .addActionListener(check1);
+        check.addActionListener(check1);
 
         class SolveListener implements ActionListener {
 
             @Override
             public void actionPerformed(ActionEvent event) {
+                ChangeNumber changeNum = new ChangeNumber();
 
             }
         }
         ActionListener solve1 = new SolveListener();
-        solve
-                .addActionListener(solve1);
+        solve.addActionListener(solve1);
 
         class NewListener implements ActionListener {
 

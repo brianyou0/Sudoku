@@ -30,13 +30,13 @@ public class Difficulty {
                 Board b = new Board();
                 if (easy.isSelected()) {
                     final Board easyBoard = new Board();
-                    easyBoard.generateBoard(5);      
+                    easyBoard.generateBoard(20);      
                 } else if (medium.isSelected()) {
                     final Board mediumBoard = new Board();
                     mediumBoard.generateBoard(30);
                 } else if (hard.isSelected()) {
                     final Board hardBoard = new Board();
-                    hardBoard.generateBoard(40);                    
+                    hardBoard.generateBoard(45);                    
                 }
                 frame.dispose();
 
