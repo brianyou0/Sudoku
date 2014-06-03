@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 public class Difficulty {
     final JFrame frame = new JFrame();
     public void Difficult() {
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(250, 75);
         JPanel panel = new JPanel();
 
@@ -23,14 +22,14 @@ public class Difficulty {
 
             @Override
             public void actionPerformed(ActionEvent event) {
+                Board b = new Board();
                 if (easy.isSelected()) {
-                    // Call method "cover" with param "15"
+                    b.generateBoard(15);
                 } else if (medium.isSelected()) {
-                    // Call method "cover" with param "10"
+                    b.generateBoard(10);
                 } else if (hard.isSelected()) {
-                    // Call method "cover" with param "5"
+                    b.generateBoard(5);
                 }
-                frame.dispose();
             }
         }
 
@@ -41,11 +40,8 @@ public class Difficulty {
         
         
         frame.add(panel);
-        frame.setVisible(false);
+        frame.setVisible(true);
        
     }
-    public void setVisible(){
-            frame.setVisible(true);
-        }
 
 }
