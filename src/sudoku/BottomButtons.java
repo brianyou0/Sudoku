@@ -30,6 +30,7 @@ public class BottomButtons {
             @Override
             public void actionPerformed(ActionEvent event) {
                 
+                
             }
         }
         ActionListener solve1 = new SolveListener();
@@ -40,6 +41,8 @@ public class BottomButtons {
             @Override
             public void actionPerformed(ActionEvent event) {
                 Difficulty difficult = new Difficulty();
+                difficult.Difficult();
+                difficult.setVisible();
             }
         }
         ActionListener new1 = new NewListener();
@@ -52,7 +55,5 @@ public class BottomButtons {
         bottomPanel.setBackground(Color.GREEN);
         return bottomPanel;
     }
-    
-    
 
 }

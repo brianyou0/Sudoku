@@ -10,10 +10,15 @@ public class Difficulty {
         frame.setSize(250, 75);
         JPanel panel = new JPanel();
 
-        final JButton easy = new JButton("Easy");
-        final JButton medium = new JButton("Medium");
-        final JButton hard = new JButton("Hard");
+        final JRadioButton easy = new JRadioButton("Easy");
+        final JRadioButton medium = new JRadioButton("Medium");
+        final JRadioButton hard = new JRadioButton("Hard");
 
+        ButtonGroup buttonGroup = new ButtonGroup();
+        buttonGroup.add(easy);
+        buttonGroup.add(medium);
+        buttonGroup.add(hard);
+        
         panel.add(easy);
         panel.add(medium);
         panel.add(hard);
@@ -24,12 +29,17 @@ public class Difficulty {
             public void actionPerformed(ActionEvent event) {
                 Board b = new Board();
                 if (easy.isSelected()) {
-                    b.generateBoard(15);
+                    final Board easyBoard = new Board();
+                    easyBoard.generateBoard(5);      
                 } else if (medium.isSelected()) {
-                    b.generateBoard(10);
+                    final Board mediumBoard = new Board();
+                    mediumBoard.generateBoard(30);
                 } else if (hard.isSelected()) {
-                    b.generateBoard(5);
+                    final Board hardBoard = new Board();
+                    hardBoard.generateBoard(40);                    
                 }
+                frame.dispose();
+
             }
         }
 
@@ -40,8 +50,14 @@ public class Difficulty {
         
         
         frame.add(panel);
-        frame.setVisible(true);
+        frame.setVisible(false);
        
     }
-
+    public void setVisible() {
+        frame.setVisible(true);
+    }
+    
+    public void remove() {
+        frame.dispose();
+    }
 }
