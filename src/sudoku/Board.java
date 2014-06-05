@@ -95,8 +95,8 @@ public class Board {
         //BottomPanel
         JPanel bottomPanel = new JPanel();
 
-        JButton check = new JButton("Check");
-        JButton solve = new JButton("Solve");
+        final JButton check = new JButton("Check");
+        final JButton solve = new JButton("Solve");
         JButton newGame = new JButton("New Game");
 
         class CheckListener implements ActionListener {
@@ -128,103 +128,12 @@ public class Board {
                 }
                 for (int x = 0; x < 9; x++) {
                     for (int y = 0; y < 9; y++) {
-                        if (!pieceIsValid(x, y, b)) {
+                        if (!Utility.pieceIsValid(x, y, b)) {
                             return false;
                         }
                     }
                 }
-                return true;
-            }
-
-            private boolean pieceIsValid(int row, int col, int[][] array) {
-                for (int x = 0; x < 9; x++) {
-                    if (x != row && array[row][col] == array[x][col]) {
-                        return false;
-                    }
-                }
-
-                if (row < 3) {
-                    if (col < 3) {
-                        for (int x = 0; x < 3; x++) {
-                            for (int y = 0; y < 3; y++) {
-                                if (x != row && y != col && array[row][col] == array[x][y]) {
-                                    return false;
-                                }
-                            }
-                        }
-                    } else if (col < 6) {
-                        for (int x = 0; x < 3; x++) {
-                            for (int y = 3; y < 6; y++) {
-                                if (x != row && y != col && array[row][col] == array[x][y]) {
-                                    return false;
-                                }
-                            }
-                        }
-
-                    } else if (col < 9) {
-                        for (int x = 0; x < 3; x++) {
-                            for (int y = 6; y < 9; y++) {
-                                if (x != row && y != col && array[row][col] == array[x][y]) {
-                                    return false;
-                                }
-                            }
-                        }
-                    }
-                } else if (row < 6) {
-                    if (col < 3) {
-                        for (int x = 3; x < 6; x++) {
-                            for (int y = 0; y < 3; y++) {
-                                if (x != row && y != col && array[row][col] == array[x][y]) {
-                                    return false;
-                                }
-                            }
-                        }
-
-                    } else if (col < 6) {
-                        for (int x = 3; x < 6; x++) {
-                            for (int y = 3; y < 6; y++) {
-                                if (x != row && y != col && array[row][col] == array[x][y]) {
-                                    return false;
-                                }
-                            }
-                        }
-                    } else if (col < 9) {
-                        for (int x = 3; x < 6; x++) {
-                            for (int y = 6; y < 9; y++) {
-                                if (x != row && y != col && array[row][col] == array[x][y]) {
-                                    return false;
-                                }
-                            }
-                        }
-                    }
-                } else if (row < 9) {
-                    if (col < 3) {
-                        for (int x = 6; x < 9; x++) {
-                            for (int y = 0; y < 3; y++) {
-                                if (x != row && y != col && array[row][col] == array[x][y]) {
-                                    return false;
-                                }
-                            }
-                        }
-                    } else if (col < 6) {
-                        for (int x = 6; x < 9; x++) {
-                            for (int y = 3; y < 6; y++) {
-                                if (x != row && y != col && array[row][col] == array[x][y]) {
-                                    return false;
-                                }
-                            }
-                        }
-                    } else if (col < 9) {
-                        for (int x = 6; x < 9; x++) {
-                            for (int y = 6; y < 9; y++) {
-                                if (x != row && y != col && array[row][col] == array[x][y]) {
-                                    return false;
-                                }
-                            }
-                        }
-                    }
-                }
-
+                solve.setEnabled(false);
                 return true;
             }
 
@@ -236,8 +145,23 @@ public class Board {
 
             @Override
             public void actionPerformed(ActionEvent event) {
-                ChangeNumber changeNum = new ChangeNumber();
+                check.setEnabled(false);
 
+                //  ChangeNumber changeNum = new ChangeNumber();
+                int i = 0;
+                for (int a = 0; a < 9; a++) {
+                    for (int b = 0; b < 9; b++) {
+                        if (!jButtons.get(i).getForeground().equals(new Color(204, 0, 0))) {
+                            jButtons.get(i).setForeground(new Color(112, 0, 186));
+                            jButtons.get(i).setText(soln[a][b] + "");
+                            jButtons.get(i).removeActionListener(jButtons.get(i).getActionListeners()[0]);
+                            jButtons.get(i).addActionListener(new cannotChangeListener());
+                        } else {
+                        }
+
+                        i++;
+                    }
+                }
             }
         }
         ActionListener solve1 = new SolveListener();
@@ -269,6 +193,7 @@ public class Board {
         mainFrame.setContentPane(mainPanel);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(500, 460);
+        mainFrame.setLocationRelativeTo(null);
         mainFrame.setVisible(true);
 
     }

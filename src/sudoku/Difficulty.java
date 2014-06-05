@@ -5,7 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Difficulty {
+
     final JFrame frame = new JFrame();
+
     public void Difficult() {
         frame.setSize(250, 75);
         JPanel panel = new JPanel();
@@ -18,7 +20,7 @@ public class Difficulty {
         buttonGroup.add(easy);
         buttonGroup.add(medium);
         buttonGroup.add(hard);
-        
+
         panel.add(easy);
         panel.add(medium);
         panel.add(hard);
@@ -30,13 +32,13 @@ public class Difficulty {
                 Board b = new Board();
                 if (easy.isSelected()) {
                     final Board easyBoard = new Board();
-                    easyBoard.generateBoard(20);      
+                    easyBoard.generateBoard(1);
                 } else if (medium.isSelected()) {
                     final Board mediumBoard = new Board();
-                    mediumBoard.generateBoard(30);
+                    mediumBoard.generateBoard(35);
                 } else if (hard.isSelected()) {
                     final Board hardBoard = new Board();
-                    hardBoard.generateBoard(45);                    
+                    hardBoard.generateBoard(50);
                 }
                 frame.dispose();
 
@@ -47,16 +49,18 @@ public class Difficulty {
         easy.addActionListener(listener);
         medium.addActionListener(listener);
         hard.addActionListener(listener);
-        
-        
+
         frame.add(panel);
         frame.setVisible(false);
-       
+
     }
+
     public void setVisible() {
+        frame.setLocationRelativeTo(null);
+
         frame.setVisible(true);
     }
-    
+
     public void remove() {
         frame.dispose();
     }
