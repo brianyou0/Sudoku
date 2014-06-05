@@ -5,9 +5,10 @@
         <group>
             <file>file://ad.iusd.org/site/NHS/STUDENT/15youbrian/My%20Documents/NetBeansProjects/Sudoku/src/sudoku/StartWindow.java</file>
             <file>file://ad.iusd.org/site/NHS/STUDENT/15youbrian/My%20Documents/NetBeansProjects/Sudoku/src/sudoku/SolutionGenerator.java</file>
+            <file>file://ad.iusd.org/site/NHS/STUDENT/15youbrian/My%20Documents/NetBeansProjects/Sudoku/src/sudoku/Utility.java</file>
             <file>file://ad.iusd.org/site/NHS/STUDENT/15youbrian/My%20Documents/NetBeansProjects/Sudoku/src/sudoku/SudokuMain.java</file>
-            <file>file://ad.iusd.org/site/NHS/STUDENT/15youbrian/My%20Documents/NetBeansProjects/Sudoku/src/sudoku/Difficulty.java</file>
             <file>file://ad.iusd.org/site/NHS/STUDENT/15youbrian/My%20Documents/NetBeansProjects/Sudoku/src/sudoku/Board.java</file>
+            <file>file://ad.iusd.org/site/NHS/STUDENT/15youbrian/My%20Documents/NetBeansProjects/Sudoku/src/sudoku/Difficulty.java</file>
             <file>file://ad.iusd.org/site/NHS/STUDENT/15youbrian/My%20Documents/NetBeansProjects/Sudoku/src/sudoku/ChangeNumber.java</file>
         </group>
     </open-files>

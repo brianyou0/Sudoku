@@ -92,27 +92,31 @@ public class Board {
         }
         panelNumbers.setBackground(Color.BLUE);
 
-        //BottomPanel
         JPanel bottomPanel = new JPanel();
 
         final JButton check = new JButton("Check");
         final JButton solve = new JButton("Solve");
         JButton newGame = new JButton("New Game");
-
+        
+        final JLabel timer = new JLabel();
+        
+        
         class CheckListener implements ActionListener {
 
             @Override
             public void actionPerformed(ActionEvent event) {
 
-                if (check()) {
+                if (check() == 0) {
                     JOptionPane.showMessageDialog(mainFrame, "Congratulations, you won!");
                 } else {
-                    JOptionPane.showMessageDialog(mainFrame, "Some of your numbers are wrong...");
+                    String mess = check() + " numbers are wrong!";
+                    JOptionPane.showMessageDialog(mainFrame, mess);
                 }
 
             }
 
-            public boolean check() {
+            public int check() {
+                int amountWrong = 0;
                 int[][] b = new int[9][9];
                 int i = 0;
                 for (int x = 0; x < 9; x++) {
@@ -129,12 +133,13 @@ public class Board {
                 for (int x = 0; x < 9; x++) {
                     for (int y = 0; y < 9; y++) {
                         if (!Utility.pieceIsValid(x, y, b)) {
-                            return false;
+                            amountWrong++;
                         }
                     }
                 }
-                solve.setEnabled(false);
-                return true;
+                if (amountWrong == 0)
+                    solve.setEnabled(false);
+                return amountWrong;
             }
 
         }
