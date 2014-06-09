@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.border.EmptyBorder;
 
 public class Board {
 
@@ -74,8 +75,10 @@ public class Board {
                 } else {
                     jButtons.get((r * 9) + c).setBackground(new Color(225, 211, 255));
                 }
+                jButtons.get((r*9) + c).setFont(new Font("Arial", Font.PLAIN, 25));
+                
                 panel.add(jButtons.get((r * 9) + (c)));
-                panel.setBackground(Color.WHITE);
+                panel.setLayout(new GridLayout(9, 9, 0, 0));
                 col++;
                 if (col == 3) {
                     isGreen = !isGreen;
@@ -91,16 +94,14 @@ public class Board {
             panelNumbers.add(panel);
         }
         panelNumbers.setBackground(Color.BLUE);
+        panelNumbers.setLayout(new java.awt.GridLayout(1, 1, 0, 0));
 
         JPanel bottomPanel = new JPanel();
 
         final JButton check = new JButton("Check");
         final JButton solve = new JButton("Solve");
         JButton newGame = new JButton("New Game");
-        
-        final JLabel timer = new JLabel();
-        
-        
+
         class CheckListener implements ActionListener {
 
             @Override
@@ -132,13 +133,14 @@ public class Board {
                 }
                 for (int x = 0; x < 9; x++) {
                     for (int y = 0; y < 9; y++) {
-                        if (!Utility.pieceIsValid(x, y, b)) {
+                        if (!(soln[x][y] == b[x][y])) {
                             amountWrong++;
                         }
                     }
                 }
-                if (amountWrong == 0)
+                if (amountWrong == 0) {
                     solve.setEnabled(false);
+                }
                 return amountWrong;
             }
 
@@ -197,7 +199,7 @@ public class Board {
         mainFrame.add(mainPanel);
         mainFrame.setContentPane(mainPanel);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainFrame.setSize(500, 460);
+        mainFrame.setSize(500, 500);
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setVisible(true);
 
