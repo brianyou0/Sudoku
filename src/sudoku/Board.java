@@ -12,6 +12,7 @@ public class Board {
 
     int[][] soln;
     JFrame mainFrame;
+    JButton toggleMode;
     JPanel mainPanel;
     ArrayList<JButton> jButtons;
 
@@ -34,9 +35,16 @@ public class Board {
             @Override
             public void actionPerformed(ActionEvent event) {
                 JButton source = (JButton) event.getSource();
-                ChangeNumber changeNum = new ChangeNumber();
-                changeNum.Change(source);
-                changeNum.setVisible();
+                if (toggleMode.getText().equals("Notes")) {
+                    ChangeNumber changeNum = new ChangeNumber();
+                    changeNum.Change(source);
+                    changeNum.setVisible();
+                }
+                else {
+                    ChangeNote changeNote = new ChangeNote();
+                    changeNote.Change(source);
+                    changeNote.setVisible();
+                }
 
             }
         }
@@ -75,8 +83,8 @@ public class Board {
                 } else {
                     jButtons.get((r * 9) + c).setBackground(new Color(225, 211, 255));
                 }
-                jButtons.get((r*9) + c).setFont(new Font("Arial", Font.PLAIN, 25));
-                
+                jButtons.get((r * 9) + c).setFont(new Font("Arial", Font.PLAIN, 25));
+
                 panel.add(jButtons.get((r * 9) + (c)));
                 panel.setLayout(new GridLayout(9, 9, 0, 0));
                 col++;
@@ -101,6 +109,7 @@ public class Board {
         final JButton check = new JButton("Check");
         final JButton solve = new JButton("Solve");
         JButton newGame = new JButton("New Game");
+        toggleMode = new JButton("Notes");
 
         class CheckListener implements ActionListener {
 
@@ -133,7 +142,7 @@ public class Board {
                 }
                 for (int x = 0; x < 9; x++) {
                     for (int y = 0; y < 9; y++) {
-                        if (!(soln[x][y] == b[x][y])) {
+                        if (!(soln[x][y] == b[x][y]) || jButtons.get(x * 9 + y).getFont().equals(new Font("Arial", Font.PLAIN, 10))) {
                             amountWrong++;
                         }
                     }
@@ -161,6 +170,7 @@ public class Board {
                         if (!jButtons.get(i).getForeground().equals(new Color(204, 0, 0))) {
                             jButtons.get(i).setForeground(new Color(112, 0, 186));
                             jButtons.get(i).setText(soln[a][b] + "");
+                            jButtons.get(i).setFont(new Font("Arial", Font.PLAIN, 25));
                             jButtons.get(i).removeActionListener(jButtons.get(i).getActionListeners()[0]);
                             jButtons.get(i).addActionListener(new cannotChangeListener());
                         } else {
@@ -187,9 +197,25 @@ public class Board {
         ActionListener new1 = new NewListener();
         newGame.addActionListener(new1);
 
+        class HintListener implements ActionListener {
+
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                if (toggleMode.getText().equals("Notes")) {
+                    toggleMode.setText("Numbers");
+                } else {
+                    toggleMode.setText("Notes");
+                }
+            }
+        }
+
+        ActionListener H = new HintListener();
+        toggleMode.addActionListener(H);
+
         bottomPanel.add(check);
         bottomPanel.add(solve);
         bottomPanel.add(newGame);
+        bottomPanel.add(toggleMode);
 
         bottomPanel.setBackground(Color.GREEN);
 
@@ -207,5 +233,13 @@ public class Board {
 
     public void setNonVisible() {
         mainPanel.setVisible(false);
+    }
+
+    public int getText() {
+        if (toggleMode.getText().equals("Notes")) {
+            return 0;
+        } else {
+            return 1;
+        }
     }
 }

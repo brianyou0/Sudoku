@@ -1,6 +1,7 @@
 package sudoku;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -24,7 +25,9 @@ public class ChangeNumber {
 
             @Override
             public void actionPerformed(ActionEvent Event) {
-                changeBut.setForeground(new Color(0,180,180));
+                changeBut.setForeground(new Color(0, 180, 180));
+                changeBut.setFont(new Font("Arial", Font.PLAIN, 25));
+
                 if (Event.getActionCommand().equals("-")) {
                     changeBut.setText("");
                 } else {
