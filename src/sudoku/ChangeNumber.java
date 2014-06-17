@@ -13,6 +13,7 @@ public class ChangeNumber {
 
     final JFrame change = new JFrame();
 
+
     public void Change(JButton button) {
         final JButton changeBut = button;
         change.setSize(475, 130);
@@ -32,6 +33,7 @@ public class ChangeNumber {
                     changeBut.setText("");
                 } else {
                     int x = Integer.parseInt(Event.getActionCommand());
+                    changeBut.removeAll();
                     switch (x) {
                         case 1:
                             changeBut.setText("1");

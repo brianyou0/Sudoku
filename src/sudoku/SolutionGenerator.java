@@ -57,17 +57,16 @@ public class SolutionGenerator {
         }
 
         unfinishedBoard = makeUnfinished(finishedBoard, difficulty);
-        
+
     }
-
-
 
     private int[][] makeUnfinished(int[][] arr, int amount) {
         // Easy: Remove 45
         // Medium: Remove 50
         // Hard: Remove 55
 
-        int [][] temp = new int [9][9];
+        int[][] temp = new int[9][9];
+
         for (int x = 0; x < 9; x++) {
             System.arraycopy(arr[x], 0, temp[x], 0, 9);
         }
@@ -79,6 +78,7 @@ public class SolutionGenerator {
             } else {
                 x--;
             }
+
         }
         return temp;
     }
@@ -86,8 +86,8 @@ public class SolutionGenerator {
     public int getNumber(int row, int column) {
         return unfinishedBoard[row][column];
     }
-    
-    public int [][] solve() {
+
+    public int[][] solve() {
         return finishedBoard;
     }
 

@@ -2,11 +2,14 @@ package sudoku;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 public class ChangeNote extends ChangeNumber {
 
@@ -31,18 +34,17 @@ public class ChangeNote extends ChangeNumber {
                 notes = button.getText();
 
                 changeBut.setForeground(new Color(0, 180, 180));
-                changeBut.setFont(new Font("Arial", Font.PLAIN, 10));
-
+                changeBut.setFont(new Font("Arial", Font.PLAIN, 11));
                 int x = Integer.parseInt(Event.getActionCommand());
                 switch (x) {
                     case 1:
                         /*if (notes.indexOf("1") == -1) {
-                            notes += "1";
-                        } else {
-                            String a = notes.substring(0, notes.indexOf("1"));
-                            String b = notes.substring(notes.indexOf("1") + 1);
-                            notes = a + b;
-                        }*/
+                         notes += "1";
+                         } else {
+                         String a = notes.substring(0, notes.indexOf("1"));
+                         String b = notes.substring(notes.indexOf("1") + 1);
+                         notes = a + b;
+                         }*/
                         check(1);
                         break;
                     case 2:
@@ -71,17 +73,54 @@ public class ChangeNote extends ChangeNumber {
                         break;
                 }
                 /*if (notes.length() > 3) {
-                    String a = notes.substring(0, 3);
-                    String b = notes.substring(3);
-                    notes = a + "\n" + b;
+                 String a = notes.substring(0, 3);
+                 String b = notes.substring(3);
+                 notes = a + "\n" + b;
+                 }
+                 else if (notes.length() > 6) {
+                 String a = notes.substring(0, 3);
+                 String b = notes.substring(3, 6);
+                 String c = notes.substring(6);
+                 notes = a + "\n" + b + "\n" + c;
+                 }
+                 */
+                changeBut.removeAll();
+                if (notes.length() > 3 && notes.length() < 6) {
+
+                    JLabel a = new JLabel(notes.substring(0, 3));
+                    JLabel b = new JLabel(notes.substring(3));
+                    a.setForeground(changeBut.getForeground());
+                    b.setForeground(changeBut.getForeground());
+                    changeBut.setForeground(changeBut.getBackground());
+                    JPanel master = new JPanel();
+                    a.setFont(changeBut.getFont());
+                    b.setFont(changeBut.getFont());
+                    master.add(a);
+                    master.add(b);
+                    master.setBackground(changeBut.getBackground());
+                    master.setLayout(new GridLayout(2, 1, 1, 1));
+                    changeBut.add(master);
+                } else if (notes.length() > 6) {
+                    JLabel a = new JLabel(notes.substring(0, 3));
+                    JLabel b = new JLabel(notes.substring(3, 6));
+                    JLabel c = new JLabel(notes.substring(6));
+                    a.setForeground(changeBut.getForeground());
+                    b.setForeground(changeBut.getForeground());
+                    c.setForeground(changeBut.getForeground());
+                    changeBut.setForeground(changeBut.getBackground());
+                    JPanel master = new JPanel();
+                    a.setFont(changeBut.getFont());
+                    b.setFont(changeBut.getFont());
+                    c.setFont(changeBut.getFont());
+                    master.add(a);
+                    master.add(b);
+                    master.add(c);
+                    master.setBackground(changeBut.getBackground());
+                    master.setLayout(new GridLayout(3, 1, 1, 1));
+
+                    changeBut.add(master);
+
                 }
-                else if (notes.length() > 6) {
-                    String a = notes.substring(0, 3);
-                    String b = notes.substring(3, 6);
-                    String c = notes.substring(6);
-                    notes = a + "\n" + b + "\n" + c;
-                }
-                        */
                 changeBut.setText(notes);
                 System.out.println(notes);
             }

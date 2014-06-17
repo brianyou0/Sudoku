@@ -6,7 +6,6 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.border.EmptyBorder;
 
 public class Board {
 
@@ -17,6 +16,8 @@ public class Board {
     ArrayList<JButton> jButtons;
 
     public void generateBoard(int p) {
+        int seconds = 0;
+        int minutes = 0;
 
         mainFrame = new JFrame("Sudoku");
         mainPanel = new JPanel();
@@ -39,8 +40,7 @@ public class Board {
                     ChangeNumber changeNum = new ChangeNumber();
                     changeNum.Change(source);
                     changeNum.setVisible();
-                }
-                else {
+                } else {
                     ChangeNote changeNote = new ChangeNote();
                     changeNote.Change(source);
                     changeNote.setVisible();
@@ -84,7 +84,6 @@ public class Board {
                     jButtons.get((r * 9) + c).setBackground(new Color(225, 211, 255));
                 }
                 jButtons.get((r * 9) + c).setFont(new Font("Arial", Font.PLAIN, 25));
-
                 panel.add(jButtons.get((r * 9) + (c)));
                 panel.setLayout(new GridLayout(9, 9, 0, 0));
                 col++;
@@ -228,6 +227,8 @@ public class Board {
         mainFrame.setSize(500, 500);
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setVisible(true);
+        
+
 
     }
 
