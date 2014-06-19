@@ -4,9 +4,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file://ad.iusd.org/site/NHS/STUDENT/15youbrian/My%20Documents/NetBeansProjects/Sudoku/src/sudoku/StartWindow.java</file>
+<<<<<<< HEAD
             <file>file://ad.iusd.org/site/NHS/STUDENT/15youbrian/My%20Documents/NetBeansProjects/Sudoku/src/sudoku/SolutionGenerator.java</file>
             <file>file://ad.iusd.org/site/NHS/STUDENT/15youbrian/My%20Documents/NetBeansProjects/Sudoku/src/sudoku/Utility.java</file>
             <file>file://ad.iusd.org/site/NHS/STUDENT/15youbrian/My%20Documents/NetBeansProjects/Sudoku/src/sudoku/SudokuMain.java</file>
+=======
+            <file>file://ad.iusd.org/site/NHS/STUDENT/15youbrian/My%20Documents/NetBeansProjects/Sudoku/src/sudoku/ChangeNote.java</file>
+            <file>file://ad.iusd.org/site/NHS/STUDENT/15youbrian/My%20Documents/NetBeansProjects/Sudoku/src/sudoku/SolutionGenerator.java</file>
+            <file>file://ad.iusd.org/site/NHS/STUDENT/15youbrian/My%20Documents/NetBeansProjects/Sudoku/src/sudoku/SudokuMain.java</file>
+            <file>file://ad.iusd.org/site/NHS/STUDENT/15youbrian/My%20Documents/NetBeansProjects/Sudoku/src/sudoku/Utility.java</file>
+>>>>>>> 244b16fe8c71decaf313fe19f152b4c60dfdcf7c
             <file>file://ad.iusd.org/site/NHS/STUDENT/15youbrian/My%20Documents/NetBeansProjects/Sudoku/src/sudoku/Board.java</file>
             <file>file://ad.iusd.org/site/NHS/STUDENT/15youbrian/My%20Documents/NetBeansProjects/Sudoku/src/sudoku/Difficulty.java</file>
             <file>file://ad.iusd.org/site/NHS/STUDENT/15youbrian/My%20Documents/NetBeansProjects/Sudoku/src/sudoku/ChangeNumber.java</file>

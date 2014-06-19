@@ -11,10 +11,19 @@ public class Board {
 
     int[][] soln;
     JFrame mainFrame;
+<<<<<<< HEAD
+=======
+    JButton toggleMode;
+>>>>>>> 244b16fe8c71decaf313fe19f152b4c60dfdcf7c
     JPanel mainPanel;
     ArrayList<JButton> jButtons;
 
     public void generateBoard(int p) {
+<<<<<<< HEAD
+=======
+        int seconds = 0;
+        int minutes = 0;
+>>>>>>> 244b16fe8c71decaf313fe19f152b4c60dfdcf7c
 
         mainFrame = new JFrame("Sudoku");
         mainPanel = new JPanel();
@@ -33,9 +42,21 @@ public class Board {
             @Override
             public void actionPerformed(ActionEvent event) {
                 JButton source = (JButton) event.getSource();
+<<<<<<< HEAD
                 ChangeNumber changeNum = new ChangeNumber();
                 changeNum.Change(source);
                 changeNum.setVisible();
+=======
+                if (toggleMode.getText().equals("Notes")) {
+                    ChangeNumber changeNum = new ChangeNumber();
+                    changeNum.Change(source);
+                    changeNum.setVisible();
+                } else {
+                    ChangeNote changeNote = new ChangeNote();
+                    changeNote.Change(source);
+                    changeNote.setVisible();
+                }
+>>>>>>> 244b16fe8c71decaf313fe19f152b4c60dfdcf7c
 
             }
         }
@@ -74,8 +95,14 @@ public class Board {
                 } else {
                     jButtons.get((r * 9) + c).setBackground(new Color(225, 211, 255));
                 }
+<<<<<<< HEAD
                 panel.add(jButtons.get((r * 9) + (c)));
                 panel.setBackground(Color.WHITE);
+=======
+                jButtons.get((r * 9) + c).setFont(new Font("Arial", Font.PLAIN, 25));
+                panel.add(jButtons.get((r * 9) + (c)));
+                panel.setLayout(new GridLayout(9, 9, 0, 0));
+>>>>>>> 244b16fe8c71decaf313fe19f152b4c60dfdcf7c
                 col++;
                 if (col == 3) {
                     isGreen = !isGreen;
@@ -91,12 +118,17 @@ public class Board {
             panelNumbers.add(panel);
         }
         panelNumbers.setBackground(Color.BLUE);
+<<<<<<< HEAD
+=======
+        panelNumbers.setLayout(new java.awt.GridLayout(1, 1, 0, 0));
+>>>>>>> 244b16fe8c71decaf313fe19f152b4c60dfdcf7c
 
         JPanel bottomPanel = new JPanel();
 
         final JButton check = new JButton("Check");
         final JButton solve = new JButton("Solve");
         JButton newGame = new JButton("New Game");
+<<<<<<< HEAD
         
         final JLabel timer = new JLabel();
         
@@ -200,10 +232,144 @@ public class Board {
         mainFrame.setSize(500, 460);
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setVisible(true);
+=======
+        toggleMode = new JButton("Notes");
+
+        class CheckListener implements ActionListener {
+
+            @Override
+            public void actionPerformed(ActionEvent event) {
+
+                if (check() == 0) {
+                    JOptionPane.showMessageDialog(mainFrame, "Congratulations, you won!");
+                } else {
+                    String mess = check() + " numbers are wrong!";
+                    JOptionPane.showMessageDialog(mainFrame, mess);
+                }
+
+            }
+
+            public int check() {
+                int amountWrong = 0;
+                int[][] b = new int[9][9];
+                int i = 0;
+                for (int x = 0; x < 9; x++) {
+                    for (int y = 0; y < 9; y++) {
+                        if (jButtons.get(i).getText().equals("")) {
+                            b[x][y] = 0;
+                        } else {
+                            b[x][y] = Integer.parseInt(jButtons.get(i).getText());
+                        }
+                        i++;
+                    }
+
+                }
+                for (int x = 0; x < 9; x++) {
+                    for (int y = 0; y < 9; y++) {
+                        if (!(soln[x][y] == b[x][y]) || jButtons.get(x * 9 + y).getFont().equals(new Font("Arial", Font.PLAIN, 10))) {
+                            amountWrong++;
+                        }
+                    }
+                }
+                if (amountWrong == 0) {
+                    solve.setEnabled(false);
+                }
+                return amountWrong;
+            }
+
+        }
+        ActionListener check1 = new CheckListener();
+        check.addActionListener(check1);
+
+        class SolveListener implements ActionListener {
+
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                check.setEnabled(false);
+
+                //  ChangeNumber changeNum = new ChangeNumber();
+                int i = 0;
+                for (int a = 0; a < 9; a++) {
+                    for (int b = 0; b < 9; b++) {
+                        if (!jButtons.get(i).getForeground().equals(new Color(204, 0, 0))) {
+                            jButtons.get(i).setForeground(new Color(112, 0, 186));
+                            jButtons.get(i).setText(soln[a][b] + "");
+                            jButtons.get(i).setFont(new Font("Arial", Font.PLAIN, 25));
+                            jButtons.get(i).removeActionListener(jButtons.get(i).getActionListeners()[0]);
+                            jButtons.get(i).addActionListener(new cannotChangeListener());
+                        } else {
+                        }
+
+                        i++;
+                    }
+                }
+            }
+        }
+        ActionListener solve1 = new SolveListener();
+        solve.addActionListener(solve1);
+
+        class NewListener implements ActionListener {
+
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                Difficulty difficult = new Difficulty();
+                difficult.Difficult();
+                difficult.setVisible();
+                mainFrame.dispose();
+            }
+        }
+        ActionListener new1 = new NewListener();
+        newGame.addActionListener(new1);
+
+        class HintListener implements ActionListener {
+
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                if (toggleMode.getText().equals("Notes")) {
+                    toggleMode.setText("Numbers");
+                } else {
+                    toggleMode.setText("Notes");
+                }
+            }
+        }
+
+        ActionListener H = new HintListener();
+        toggleMode.addActionListener(H);
+
+        bottomPanel.add(check);
+        bottomPanel.add(solve);
+        bottomPanel.add(newGame);
+        bottomPanel.add(toggleMode);
+
+        bottomPanel.setBackground(Color.GREEN);
+
+        mainFrame.setResizable(false);
+        mainPanel.add(panelNumbers, BorderLayout.CENTER);
+        mainPanel.add(bottomPanel, BorderLayout.SOUTH);
+        mainFrame.add(mainPanel);
+        mainFrame.setContentPane(mainPanel);
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.setSize(500, 500);
+        mainFrame.setLocationRelativeTo(null);
+        mainFrame.setVisible(true);
+        
+
+>>>>>>> 244b16fe8c71decaf313fe19f152b4c60dfdcf7c
 
     }
 
     public void setNonVisible() {
         mainPanel.setVisible(false);
     }
+<<<<<<< HEAD
+=======
+
+    public int getText() {
+        if (toggleMode.getText().equals("Notes")) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
+>>>>>>> 244b16fe8c71decaf313fe19f152b4c60dfdcf7c
 }

@@ -1,6 +1,10 @@
 package sudoku;
 
 import java.awt.Color;
+<<<<<<< HEAD
+=======
+import java.awt.Font;
+>>>>>>> 244b16fe8c71decaf313fe19f152b4c60dfdcf7c
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -12,6 +16,10 @@ public class ChangeNumber {
 
     final JFrame change = new JFrame();
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 244b16fe8c71decaf313fe19f152b4c60dfdcf7c
     public void Change(JButton button) {
         final JButton changeBut = button;
         change.setSize(475, 130);
@@ -24,11 +32,21 @@ public class ChangeNumber {
 
             @Override
             public void actionPerformed(ActionEvent Event) {
+<<<<<<< HEAD
                 changeBut.setForeground(new Color(0,180,180));
+=======
+                changeBut.setForeground(new Color(0, 180, 180));
+                changeBut.setFont(new Font("Arial", Font.PLAIN, 25));
+
+>>>>>>> 244b16fe8c71decaf313fe19f152b4c60dfdcf7c
                 if (Event.getActionCommand().equals("-")) {
                     changeBut.setText("");
                 } else {
                     int x = Integer.parseInt(Event.getActionCommand());
+<<<<<<< HEAD
+=======
+                    changeBut.removeAll();
+>>>>>>> 244b16fe8c71decaf313fe19f152b4c60dfdcf7c
                     switch (x) {
                         case 1:
                             changeBut.setText("1");
