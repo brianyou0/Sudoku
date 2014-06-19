@@ -1,17 +1,22 @@
-package sudoku;
+package Finished;
 
 import java.util.ArrayList;
 
 public class Sudoku {
 
+    private int timeOut;
+    private int masterTimeOut;
+    private int[][] finishedBoard;
+    private int[][] unfinishedBoard;
+
     public Sudoku(int difficulty) {
-        int timeOut = 0;
-        int masterTimeOut = 0;
-        int[][] finishedBoard = new int[9][9];
-        int[][] unfinishedBoard = new int[9][9];
+        timeOut = 0;
+        masterTimeOut = 0;
+        finishedBoard = new int[9][9];
+        unfinishedBoard = new int[9][9];
         for (int x = 0; x < 9; x++) {
 
-            ArrayList<Integer> remains = new ArrayList<Integer>();
+            ArrayList<Integer> remains = new ArrayList<>();
             for (int p = 1; p <= 9; p++) {
                 remains.add(p);
             }
@@ -20,19 +25,23 @@ public class Sudoku {
                     finishedBoard = new int[9][9];
                     y = 0;
                     x = 0;
+                    remains = new ArrayList<>();
+                    for (int p = 1; p <= 9; p++) {
+                        remains.add(p);
+                    }
+                    masterTimeOut = 0;
                 }
                 if (timeOut == 100) {
                     for (int z = 0; z < 9; z++) {
                         finishedBoard[x][z] = 0;
                         y = 0;
-                        remains = new ArrayList<Integer>();
+                        remains = new ArrayList<>();
                         for (int p = 1; p <= 9; p++) {
                             remains.add(p);
                         }
                     }
                     masterTimeOut++;
                 }
-
                 int random = (int) (Math.random() * remains.size());
                 int rand = remains.get(random);
                 finishedBoard[x][y] = rand;
@@ -42,25 +51,18 @@ public class Sudoku {
                 } else {
                     remains.remove(remains.indexOf(rand));
                     timeOut = 0;
-                    //System.out.print(rand + " ");
                 }
 
             }
-            System.out.println();
         }
         for (int x = 0; x < 9; x++) {
             for (int y = 0; y < 9; y++) {
-                System.out.print(finishedBoard[x][y] + " ");
             }
-            System.out.println();
         }
-        System.out.println();
         unfinishedBoard = makeUnfinished(finishedBoard, difficulty);
         for (int x = 0; x < 9; x++) {
             for (int y = 0; y < 9; y++) {
-                System.out.print(unfinishedBoard[x][y] + " ");
             }
-            System.out.println();
         }
     }
 
